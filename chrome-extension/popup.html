@@ -7,7 +7,7 @@
   </head>
   <body>
     <header class="logo-container">
-      <div class="logo-mark"></div>
+      <img class="brand-logo" src="brand-logo.png" width="28" height="28" alt="" />
       <h1>ContextForge</h1>
     </header>
     <p class="tagline">Local-first page → Markdown</p>
@@ -15,6 +15,7 @@
     <main>
       <button id="extract" type="button">Extract this page</button>
       <p id="status" role="status"></p>
+      <label class="sr-only" for="output">Extracted Markdown</label>
       <textarea id="output" placeholder="Markdown will appear here (editable; tokens update live)"></textarea>
       <div class="row">
         <button id="copy" type="button" disabled>Copy</button>

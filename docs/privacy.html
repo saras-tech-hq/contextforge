@@ -9,58 +9,72 @@
     />
     <title>ContextForge — Privacy</title>
     <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <a class="skip" href="#content">Skip to content</a>
     <div class="wrap">
-      <header>
-        <a class="logo" href="index.html">ContextForge</a>
-        <nav>
+      <header class="site-header">
+        <a class="brand" href="index.html">
+          <img src="brand-logo.png" width="40" height="40" alt="" />
+          ContextForge
+        </a>
+        <nav aria-label="Primary">
           <a href="index.html">Home</a>
           <a href="privacy.html">Privacy</a>
           <a href="index.html#mcp">MCP</a>
         </nav>
       </header>
 
-      <section class="hero">
-        <h1>Privacy</h1>
-        <p>
-          ContextForge is local-first. Page extraction, Markdown conversion,
-          token estimation, and prompt packing run inside your browser.
-        </p>
-      </section>
+      <main id="content">
+        <section class="hero hero-simple">
+          <div>
+            <p class="kicker">Local-first</p>
+            <h1>Privacy</h1>
+            <p class="lede">
+              ContextForge is local-first. Page extraction, Markdown conversion,
+              token estimation, and prompt packing run inside your browser.
+            </p>
+          </div>
+        </section>
 
-      <section class="grid">
-        <article class="card">
-          <h3>Extension data</h3>
-          <p>
-            The last extract and license state are stored in
-            <code>chrome.storage.local</code> on your device, bounded in size.
-            No telemetry is collected or sent.
-          </p>
-        </article>
-
-        <article class="card">
-          <h3>License validation</h3>
-          <p>
-            Validation runs only when you activate a key. The extension sends
-            the license key and an instance name to the license Worker you
-            configure; page content is never included.
-          </p>
-        </article>
-
-        <article class="card">
-          <h3>What stays local</h3>
-          <p>
-            Extracted text leaves the extension only when you copy it or paste
-            it into another tool. The MCP server reads pages on your machine
-            and writes Markdown to the requesting client.
-          </p>
-        </article>
-      </section>
+        <section class="grid">
+          <article class="card">
+            <h3>Extension data</h3>
+            <p>
+              The last extract and license state are stored in
+              <code>chrome.storage.local</code> on your device, bounded in size.
+              No telemetry is collected or sent.
+            </p>
+          </article>
+          <article class="card">
+            <h3>License validation</h3>
+            <p>
+              Validation runs only when you activate a key. The extension sends
+              the license key and an instance name to the license Worker you
+              configure; page content is never included.
+            </p>
+          </article>
+          <article class="card">
+            <h3>What stays local</h3>
+            <p>
+              Extracted text leaves the extension only when you copy it or paste
+              it into another tool. The MCP server reads pages on your machine
+              and writes Markdown to the requesting client.
+            </p>
+          </article>
+        </section>
+      </main>
 
       <footer>
-        ContextForge — MIT core. Pro licensing is separate.
+        <span>ContextForge — MIT core. Pro licensing is separate.</span>
+        <a href="index.html">Home</a>
       </footer>
     </div>
   </body>

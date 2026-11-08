@@ -6,7 +6,7 @@ export default defineConfig({
     environment: 'node',
     include: [
       'shared/tests/**/*.test.ts',
-      'chrome-extension/tests/**/*.test.ts',
+      'chrome-extension/tests/*.test.ts',
       'mcp-server/tests/**/*.test.ts'
     ],
     exclude: ['**/node_modules/**', '**/dist/**']

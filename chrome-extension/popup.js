@@ -30,6 +30,12 @@ function updateTokenLabel() {
   tokensEl.textContent = n ? `~${n} tokens` : "";
 }
 
+function setStatus(text, kind) {
+  statusEl.textContent = text;
+  statusEl.classList.toggle("ok", kind === "ok");
+  statusEl.classList.toggle("error", kind === "error");
+}
+
 const extractDeps = { TurndownService, Readability: class {} };
 
 output.addEventListener("input", async () => {
@@ -39,7 +45,7 @@ output.addEventListener("input", async () => {
 });
 
 extractBtn.addEventListener("click", async () => {
-  statusEl.textContent = "Extracting…";
+  setStatus("Extracting…");
   copyBtn.disabled = true;
 
   try {
@@ -71,7 +77,7 @@ extractBtn.addEventListener("click", async () => {
 
     output.value = page.markdown;
     updateTokenLabel();
-    statusEl.textContent = page.title || "Done";
+    setStatus(page.title || "Done", "ok");
     copyBtn.disabled = !page.markdown;
     packBtn.disabled = !(await isPro()) || !page.markdown;
 
@@ -86,19 +92,19 @@ extractBtn.addEventListener("click", async () => {
     updateTokenLabel();
     copyBtn.disabled = true;
     packBtn.disabled = true;
-    statusEl.textContent = err.message || String(err);
+    setStatus(err.message || String(err), "error");
   }
 });
 
 copyBtn.addEventListener("click", async () => {
   const md = cleanMarkdown(output.value);
   await navigator.clipboard.writeText(md);
-  statusEl.textContent = "Copied";
+  setStatus("Copied", "ok");
 });
 
 packBtn.addEventListener("click", async () => {
   if (!(await isPro())) {
-    statusEl.textContent = "Pro required";
+    setStatus("Pro required", "error");
     return;
   }
   const md = cleanMarkdown(output.value);
@@ -106,7 +112,7 @@ packBtn.addEventListener("click", async () => {
   output.value = packed;
   updateTokenLabel();
   await navigator.clipboard.writeText(packed);
-  statusEl.textContent = "Packed prompt copied";
+  setStatus("Packed prompt copied", "ok");
 });
 
 activateBtn.addEventListener("click", async () => {
@@ -116,12 +122,12 @@ activateBtn.addEventListener("click", async () => {
     const state = await activateLicense(licenseInput.value);
     if (state.valid) {
       licenseInput.value = "";
-      statusEl.textContent = "Pro unlocked";
+      setStatus("Pro unlocked", "ok");
     } else {
-      statusEl.textContent = state.error || "Invalid license";
+      setStatus(state.error || "Invalid license", "error");
     }
   } catch (err) {
-    statusEl.textContent = err.message || String(err);
+    setStatus(err.message || String(err), "error");
   } finally {
     activateBtn.disabled = false;
     await refreshProUi();

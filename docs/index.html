@@ -9,13 +9,23 @@
     />
     <title>ContextForge — webpage to AI-ready Markdown</title>
     <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <a class="skip" href="#content">Skip to content</a>
     <div class="wrap">
-      <header>
-        <a class="logo" href="/">ContextForge</a>
-        <nav>
+      <header class="site-header">
+        <a class="brand" href="index.html">
+          <img src="brand-logo.png" width="40" height="40" alt="" />
+          ContextForge
+        </a>
+        <nav aria-label="Primary">
           <a href="#features">Features</a>
           <a href="#pricing">Pricing</a>
           <a href="#mcp">MCP</a>
@@ -23,97 +33,101 @@
         </nav>
       </header>
 
-      <section class="hero">
-        <h1>Any page, clean Markdown, fewer tokens.</h1>
-        <p class="lede">
-          Local-first Chrome/Edge extension and MCP server. Extract readable
-          context for ChatGPT, Claude, Gemini, Cursor — on your device unless
-          you opt into cloud.
-        </p>
-        <div class="cta">
-          <a class="btn btn-primary" href="#install">Load the extension</a>
-          <a class="btn btn-ghost" href="#pricing">Pro license</a>
-        </div>
-      </section>
+      <main id="content">
+        <section class="hero">
+          <div>
+            <p class="kicker">Local-first context engine</p>
+            <h1>Any page, clean Markdown, fewer tokens.</h1>
+            <p class="lede">
+              Local-first Chrome/Edge extension and MCP server. Extract readable
+              context for ChatGPT, Claude, Gemini, Cursor — on your device unless
+              you opt into cloud.
+            </p>
+            <div class="cta">
+              <a class="btn btn-primary" href="#install">Load the extension</a>
+              <a class="btn btn-ghost" href="#pricing">Pro license</a>
+            </div>
+          </div>
+          <div class="stage" aria-hidden="true">
+            <div class="stage-card">
+              <img src="brand-logo.png" width="88" height="88" alt="" />
+              <pre># Article title
+Readable Markdown
+~412 tokens</pre>
+            </div>
+          </div>
+        </section>
 
-      <section id="features">
-        <h2>Built for extraction quality</h2>
-        <div class="grid">
-          <article class="card">
-            <h3>Readability + Turndown</h3>
-            <p>
-              Main-content extraction, then tight Markdown. Not a kitchen-sink
-              clipper.
-            </p>
-          </article>
-          <article class="card">
-            <h3>Token estimates</h3>
-            <p>
-              Live ~4-char token budget so you know what you paste into a model.
-            </p>
-          </article>
-          <article class="card">
-            <h3>Local-first</h3>
-            <p>
-              Extracts stay on device. Only the last extract is persisted, and
-              license checks are opt-in.
-            </p>
-          </article>
-          <article class="card">
-            <h3>Agents via MCP</h3>
-            <p>
-              stdio server for Cursor and Claude Desktop: HTML or URL → Markdown.
-            </p>
-          </article>
-        </div>
-      </section>
+        <section id="features">
+          <h2>Built for extraction quality</h2>
+          <div class="grid">
+            <article class="card">
+              <h3>Readability + Turndown</h3>
+              <p>Main-content extraction, then tight Markdown. Not a kitchen-sink clipper.</p>
+            </article>
+            <article class="card">
+              <h3>Token estimates</h3>
+              <p>Live ~4-char token budget so you know what you paste into a model.</p>
+            </article>
+            <article class="card">
+              <h3>Local-first</h3>
+              <p>Extracts stay on device. Only the last extract is persisted, and license checks are opt-in.</p>
+            </article>
+            <article class="card">
+              <h3>Agents via MCP</h3>
+              <p>stdio server for Cursor and Claude Desktop: HTML or URL → Markdown.</p>
+            </article>
+          </div>
+        </section>
 
-      <section id="pricing">
-        <h2>Free core. Pro is optional.</h2>
-        <div class="grid">
+        <section id="pricing">
+          <h2>Free core. Pro is optional.</h2>
+          <div class="grid">
+            <article class="card">
+              <p class="price">Free</p>
+              <p>Extract, copy, and keep the last result locally. Forever.</p>
+              <p class="fine">No account. No telemetry required.</p>
+            </article>
+            <article class="card">
+              <p class="price">Pro</p>
+              <p>
+                Prompt packing in the extension, validated with a license key by
+                the ContextForge license Worker.
+              </p>
+              <p class="fine">
+                Pro licensing is not open yet. Everything on the Free tier keeps
+                working without a key.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section id="install">
+          <h2>Install (developer)</h2>
           <article class="card">
-            <p class="price">Free</p>
-            <p>Extract, copy, and keep the last result locally. Forever.</p>
-            <p class="fine">No account. No telemetry required.</p>
-          </article>
-          <article class="card">
-            <p class="price">Pro</p>
             <p>
-              Prompt packing in the extension, validated with a license key by
-              the ContextForge license Worker.
-            </p>
-            <p class="fine">
-              Pro licensing is not open yet. Everything on the Free tier keeps
-              working without a key.
+              Chrome/Edge → Extensions → Developer mode → Load unpacked →
+              <code>chrome-extension/</code>. After
+              <code>npm run build:extension</code>.
             </p>
           </article>
-        </div>
-      </section>
+        </section>
 
-      <section id="install">
-        <h2>Install (developer)</h2>
-        <article class="card">
-          <p>
-            Chrome/Edge → Extensions → Developer mode → Load unpacked →
-            <code>chrome-extension/</code>. After
-            <code>npm run build:extension</code>.
-          </p>
-        </article>
-      </section>
-
-      <section id="mcp">
-        <h2>MCP</h2>
-        <article class="card">
-          <p>
-            Point Cursor or Claude Desktop at
-            <code>node mcp-server/dist/index.js</code>. See
-            <code>examples/mcp.json</code>.
-          </p>
-        </article>
-      </section>
+        <section id="mcp">
+          <h2>MCP</h2>
+          <article class="card">
+            <p>
+              Point Cursor or Claude Desktop at
+              <code>node mcp-server/dist/index.js</code>. See
+              <code>examples/mcp.json</code>.
+            </p>
+          </article>
+        </section>
+      </main>
 
       <footer>
-        ContextForge — MIT core. Pro licensing is separate.
+        <span>ContextForge — MIT core. Pro licensing is separate.</span>
+        <a href="privacy.html">Privacy</a>
       </footer>
     </div>
   </body>
