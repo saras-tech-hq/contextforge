@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+pnpm-lock.yaml
+yarn-lock.yaml
+package-lock.lock
+
+# Build outputs
+chrome-extension/lib/
+workers/.wrangler/
+landing/dist/
+
+# Environment
+.env
+*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.lock
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Chrome extension
+.chrome-extension/
+
+# Zip artifacts
+*.zip

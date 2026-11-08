@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ContextForge</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="logo-container">
+      <div class="logo-mark"></div>
+      <h1>ContextForge</h1>
+    </header>
+    <p class="tagline">Local-first page → Markdown</p>
+
+    <main>
+      <button id="extract" type="button">Extract this page</button>
+      <p id="status" role="status"></p>
+      <textarea id="output" placeholder="Markdown will appear here (editable; tokens update live)"></textarea>
+      <div class="row">
+        <button id="copy" type="button" disabled>Copy</button>
+        <button id="pack" type="button" disabled title="Pro: wrap as an AI prompt">Pack prompt</button>
+        <span id="tokens"></span>
+      </div>
+
+      <section class="section-pro">
+        <span class="pro-badge">Pro</span>
+        <p id="pro-status" class="fine">Free tier — core extract is unlimited. Pro unlocks prompt packing.</p>
+        <div class="row">
+          <input id="license-key" type="password" autocomplete="off" placeholder="Pro license key" />
+          <button id="activate" type="button">Activate</button>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

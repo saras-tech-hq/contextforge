@@ -1,0 +1,8 @@
+name = "contextforge-license"
+main = "src/worker.js"
+compatibility_date = "2025-10-01"
+
+# Secrets (do not commit values):
+#   wrangler secret put LEMON_SQUEEZY_API_KEY
+# Optional:
+#   wrangler secret put ALLOWED_ORIGINS   # comma-separated, e.g. chrome-extension://<id>

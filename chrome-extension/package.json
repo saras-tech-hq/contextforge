@@ -1,0 +1,13 @@
+{
+  "name": "@contextforge/chrome-extension",
+  "version": "0.1.0",
+  "private": true,
+  "description": "ContextForge Manifest V3 extension.",
+  "scripts": {
+    "build": "node ./scripts/sync-lib.mjs"
+  },
+  "dependencies": {
+    "@mozilla/readability": "^0.5.0",
+    "turndown": "^7.2.0"
+  }
+}

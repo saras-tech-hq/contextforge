@@ -1,0 +1,26 @@
+{
+  "name": "@contextforge/mcp-server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "ContextForge MCP server (stdio).",
+  "type": "module",
+  "bin": {
+    "contextforge-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@contextforge/shared": "*",
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "@mozilla/readability": "^0.5.0",
+    "jsdom": "^25.0.1",
+    "turndown": "^7.2.0"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^21.1.7",
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.2"
+  }
+}

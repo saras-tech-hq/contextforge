@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "contextforge": {
+      "command": "node",
+      "args": ["D:/Project Tool/mcp-server/dist/index.js"]
+    }
+  }
+}

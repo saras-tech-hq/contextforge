@@ -1,0 +1,3 @@
+# Copy Readability.js and turndown.js here after npm install:
+# node_modules/@mozilla/readability/Readability.js
+# node_modules/turndown/dist/turndown.js
