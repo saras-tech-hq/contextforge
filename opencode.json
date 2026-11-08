@@ -4,7 +4,7 @@
     "servers": {
       "contextforge": {
         "type": "local",
-        "command": ["node", "D:/Project Tool/mcp-server/dist/index.js"]
+        "command": ["node", "mcp-server/dist/index.js"]
       }
     }
   }

@@ -1,22 +1,30 @@
 {
   "name": "contextforge",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "description": "Local-first Chrome/Edge extension + MCP server that turns any webpage into clean, token-efficient Markdown for AI tools.",
   "workspaces": [
     "chrome-extension",
     "mcp-server",
     "shared",
-    "landing"
+    "docs"
   ],
   "scripts": {
+    "build": "npm run build:extension && npm run build:mcp",
     "build:extension": "npm run build -w shared && npm run build -w chrome-extension",
     "build:mcp": "npm run build -w mcp-server",
     "build:shared": "npm run build -w shared",
-    "dev:mcp": "npm run dev -w mcp-server"
+    "dev:mcp": "npm run dev -w mcp-server",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "verify:build": "node tools/verify-build-sync.mjs"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22.12.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.65.0",
+    "vitest": "^5.1.0"
+  }
 }

@@ -3,6 +3,7 @@ import { articleHtmlToMarkdown } from "./lib/shared/htmlToMarkdown.js";
 import { cleanMarkdown } from "./lib/shared/cleanMarkdown.js";
 import { estimateTokens } from "./lib/shared/estimateTokens.js";
 import { activateLicense, getLicenseState, isPro } from "./license.js";
+import { saveLastExtract } from "./storage.js";
 
 const extractBtn = document.getElementById("extract");
 const copyBtn = document.getElementById("copy");
@@ -74,8 +75,17 @@ extractBtn.addEventListener("click", async () => {
     copyBtn.disabled = !page.markdown;
     packBtn.disabled = !(await isPro()) || !page.markdown;
 
-    await chrome.storage.local.set({ lastExtract: page });
+    const saved = await saveLastExtract(page);
+    if (!saved.ok) {
+      // Extraction already succeeded; a storage failure must not hide the result.
+      console.warn("ContextForge: could not persist last extract:", saved.error);
+    }
   } catch (err) {
+    // Never leave a previous page's Markdown looking like the current result.
+    output.value = "";
+    updateTokenLabel();
+    copyBtn.disabled = true;
+    packBtn.disabled = true;
     statusEl.textContent = err.message || String(err);
   }
 });

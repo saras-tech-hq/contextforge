@@ -24,7 +24,7 @@ const cleanProperties = {
         description: "Truncate markdown after N characters",
     },
 };
-const server = new Server({ name: "contextforge", version: "0.1.0" }, { capabilities: { tools: {} } });
+const server = new Server({ name: "contextforge", version: "1.0.0" }, { capabilities: { tools: {} } });
 server.setRequestHandler(ListToolsRequestSchema, async () => ({
     tools: [
         {

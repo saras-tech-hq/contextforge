@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="128" height="128" role="img" aria-label="ContextForge">
+  <rect width="32" height="32" rx="7" fill="#00d4aa" />
+  <g fill="none" stroke="#0a0a0f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 5.5 5.5 11 16 16.5 26.5 11 16 5.5z" fill="#0a0a0f" />
+    <path d="M5.5 16.5 16 22l10.5-5.5" />
+    <path d="M5.5 22.5 16 28l10.5-5.5" />
+  </g>
+</svg>

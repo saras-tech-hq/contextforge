@@ -5,55 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="ContextForge privacy policy. Local-first Chrome/Edge extension. No telemetry required. License validation via Lemon Squeezy or Cloudflare Worker."
+      content="ContextForge privacy policy. Local-first Chrome/Edge extension. No telemetry. License validation only when you activate a key."
     />
     <title>ContextForge — Privacy</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="wrap">
       <header>
-        <a class="logo" href="/">ContextForge</a>
+        <a class="logo" href="index.html">ContextForge</a>
         <nav>
-          <a href="/">Home</a>
+          <a href="index.html">Home</a>
           <a href="privacy.html">Privacy</a>
-          <a href="#mcp">MCP</a>
+          <a href="index.html#mcp">MCP</a>
         </nav>
       </header>
 
       <section class="hero">
         <h1>Privacy</h1>
         <p>
-          ContextForge is built with privacy by design. The core extension
-          runs entirely locally — no data leaves your device unless you
-          explicitly opt in.
+          ContextForge is local-first. Page extraction, Markdown conversion,
+          token estimation, and prompt packing run inside your browser.
         </p>
       </section>
 
       <section class="grid">
         <article class="card">
-          <h3>Extension Data</h3>
+          <h3>Extension data</h3>
           <p>
-            All extraction data, license state, and prompt packing occur in
-            <code>chrome.storage.local</code> or your local MCP server. No
-            telemetry is sent unless you choose to share usage insights.
+            The last extract and license state are stored in
+            <code>chrome.storage.local</code> on your device, bounded in size.
+            No telemetry is collected or sent.
           </p>
         </article>
 
         <article class="card">
-          <h3>License Validation</h3>
+          <h3>License validation</h3>
           <p>
-            License keys are validated via Lemon Squeezy's API or your
-            Cloudflare Worker. Your license key is never stored server-side.
+            Validation runs only when you activate a key. The extension sends
+            the license key and an instance name to the license Worker you
+            configure; page content is never included.
           </p>
         </article>
 
         <article class="card">
-          <h3>Optional Cloud Features</h3>
+          <h3>What stays local</h3>
           <p>
-            Prompt packing and token estimation may use Cloudflare Workers
-            infrastructure, but no personally identifiable information is
-            associated with these requests.
+            Extracted text leaves the extension only when you copy it or paste
+            it into another tool. The MCP server reads pages on your machine
+            and writes Markdown to the requesting client.
           </p>
         </article>
       </section>

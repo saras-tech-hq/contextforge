@@ -2,7 +2,7 @@
   "mcpServers": {
     "contextforge": {
       "command": "node",
-      "args": ["D:/Project Tool/mcp-server/dist/index.js"]
+      "args": ["<absolute-path-to-repo>/mcp-server/dist/index.js"]
     }
   }
 }

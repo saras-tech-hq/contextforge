@@ -3,7 +3,7 @@
  * Fast, local, model-agnostic — not a tokenizer.
  */
 export function estimateTokens(text) {
-    if (!text)
+    if (!text || !text.trim())
         return 0;
     return Math.ceil(text.length / 4);
 }

@@ -6,7 +6,7 @@ Cloudflare Worker that validates Pro keys so the Lemon Squeezy API secret never 
 
 1. Create a store and a **Pro** product with **license keys** enabled.
 2. Copy a store **API key** (Settings → API).
-3. Copy the checkout / buy URL into `landing/index.html` (replace `REPLACE_ME`).
+3. When checkout is ready, add the buy URL to `docs/index.html`. The site currently has no purchase link while Pro is closed.
 
 ## 2. Deploy
 

@@ -40,7 +40,7 @@ const cleanProperties = {
 };
 
 const server = new Server(
-  { name: "contextforge", version: "0.1.0" },
+  { name: "contextforge", version: "1.0.0" },
   { capabilities: { tools: {} } }
 );
 

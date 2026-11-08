@@ -1,8 +1,8 @@
 {
-  "name": "@contextforge/landing",
-  "version": "0.1.0",
+  "name": "@contextforge/docs",
+  "version": "1.0.0",
   "private": true,
-  "description": "ContextForge static landing (placeholder).",
+  "description": "ContextForge static site (GitHub Pages).",
   "scripts": {
     "start": "npx --yes serve ."
   }
