@@ -66,6 +66,28 @@ h1 {
   color: var(--muted);
 }
 
+.onboarding {
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.onboarding p {
+  margin: 0 0 8px;
+}
+
+#dismiss-onboarding {
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-subtle);
+  color: var(--fg);
+}
+
 button,
 input,
 textarea {

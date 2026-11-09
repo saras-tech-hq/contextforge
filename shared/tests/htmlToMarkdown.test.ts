@@ -19,6 +19,18 @@ function docFromHtml(html: string): Document {
 
 describe("htmlToMarkdown", () => {
   describe("documentToMarkdown", () => {
+    test("empty and malformed HTML does not throw", () => {
+      expect(() => documentToMarkdown(docFromHtml(""), deps)).not.toThrow();
+      expect(() =>
+        documentToMarkdown(docFromHtml("<html><body><div></div></body></html>"), deps)
+      ).not.toThrow();
+      const broken = documentToMarkdown(
+        docFromHtml("<p>unclosed<div><script>alert(1)</script>ok"),
+        deps
+      );
+      expect(broken.markdown).not.toContain("<script>");
+    });
+
     test("extracts title and content from a simple document", () => {
       const doc = docFromHtml(
         `<!doctype html><html><head><title>Test Title</title></head><body>

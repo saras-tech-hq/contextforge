@@ -106,9 +106,18 @@ Readable Markdown
           <h2>Install (developer)</h2>
           <article class="card">
             <p>
-              Chrome/Edge → Extensions → Developer mode → Load unpacked →
-              <code>chrome-extension/</code>. After
-              <code>npm run build:extension</code>.
+              Requires Node.js 22.12+. Clone the repo, then:
+            </p>
+            <p><code>npm ci</code> → <code>npm run build</code></p>
+            <p>
+              Chrome: <code>chrome://extensions</code> · Edge:
+              <code>edge://extensions</code> → Developer mode → Load unpacked →
+              <code>chrome-extension/</code>.
+            </p>
+            <p>
+              Store listings are not published yet. Report issues at
+              <a href="https://github.com/saras-tech-hq/contextforge/issues">GitHub Issues</a>
+              (no telemetry).
             </p>
           </article>
         </section>
@@ -119,7 +128,9 @@ Readable Markdown
             <p>
               Point Cursor or Claude Desktop at
               <code>node mcp-server/dist/index.js</code>. See
-              <code>examples/mcp.json</code>.
+              <code>examples/mcp.json</code>. Tools:
+              <code>html_to_markdown</code> and <code>fetch_web_page</code>
+              (http/https only, 20s timeout, 5&nbsp;MB cap).
             </p>
           </article>
         </section>

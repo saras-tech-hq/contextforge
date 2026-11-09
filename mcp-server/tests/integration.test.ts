@@ -53,6 +53,22 @@ describe("MCP SDK Integration", () => {
     expect(texts).toMatch(/tokenEstimate/i);
   });
 
+  it("rejects non-http URLs on fetch_web_page", async () => {
+    const result = await client.callTool({
+      name: "fetch_web_page",
+      arguments: { url: "file:///etc/passwd" },
+    });
+    expect(result.isError).toBe(true);
+  });
+
+  it("requires html for html_to_markdown", async () => {
+    const result = await client.callTool({
+      name: "html_to_markdown",
+      arguments: {},
+    });
+    expect(result.isError).toBe(true);
+  });
+
   it("returns an error for unknown tools", async () => {
     const result = await client.callTool({
       name: "not_a_real_tool",

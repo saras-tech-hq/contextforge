@@ -136,6 +136,17 @@ activateBtn.addEventListener("click", async () => {
 
 refreshProUi();
 
+const onboard = document.getElementById("onboarding");
+const dismissOnboard = document.getElementById("dismiss-onboarding");
+const ONBOARD_KEY = "onboardingDismissed";
+chrome.storage.local.get(ONBOARD_KEY).then((stored) => {
+  if (!stored[ONBOARD_KEY] && onboard) onboard.hidden = false;
+});
+dismissOnboard?.addEventListener("click", async () => {
+  if (onboard) onboard.hidden = true;
+  await chrome.storage.local.set({ [ONBOARD_KEY]: true });
+});
+
 /**
  * Isolated world after Readability.js is injected. Clones the document so
  * Readability can mutate safely, then returns article HTML (not Markdown).

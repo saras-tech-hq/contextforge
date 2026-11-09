@@ -103,6 +103,8 @@ npx wrangler deploy
 3. Set `LICENSE_API_URL` in `chrome-extension/config.js` and the same origin in `manifest.json` `host_permissions`.
 4. Full notes: `workers/license-verify/README.md`.
 
+Production-readiness notes (local, not a store submission): [`release/GO-NO-GO.md`](release/GO-NO-GO.md).
+
 ## Verification
 
 ```bash
