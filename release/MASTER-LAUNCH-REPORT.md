@@ -1,14 +1,28 @@
 # ContextForge Master Launch Report
 
-**Product:** ContextForge 1.0.0 RC  
+**Product:** ContextForge 1.0.0 Free public beta  
 **Working tree:** `D:\contextforge-phase34\rewrite-work`  
-**Parent published GitHub main:** `9aece9629c58d72cb9d715a7292b708472cd69f3`  
-**Local candidate before this phase:** `7af27e41c994f4fa4bdb81e3a1674c866bc403cf`  
+**Published GitHub main:** `5f12f9fec056d86e51f93919d5ec6b13fce8fcd2`  
+**Previous GitHub main:** `9aece9629c58d72cb9d715a7292b708472cd69f3`  
 **Date:** 2026-11-11
+
+## Phase 18 publication (local note — not an extra production commit)
+
+**Verdict:** PARTIALLY LAUNCHED. See `release/PHASE18-LAUNCH-REPORT.md`.
+
+- Push: `9aece96..5f12f9f` to `origin/main`
+- Pages: run `42965684500` success, https://saras-tech-hq.github.io/contextforge/
+- Release: https://github.com/saras-tech-hq/contextforge/releases/tag/v1.0.0-beta.1 (prerelease)
+- ZIP SHA-256: `073810dec8554800075db985f9a95202e0f4ba6477da349fae22896a1c691497`
+- Website install copy still says clone + `npm ci` (not the ZIP)
+
+## Phase 18.1 (local, not pushed)
+
+Homepage hotfix ready: primary CTA **Download Free Beta** → verified ZIP; Load unpacked steps; clone/npm under For developers. **GO to push docs-only commit after owner approval.** ZIP artifact unchanged (`073810de…`). See `release/PHASE18.1-HOTFIX.md`.
 
 ## A. Executive decision
 
-**Overall:** **CONDITIONAL GO** for a **GitHub Free sideload beta** after owner Chrome/Edge toolbar smoke and an ordinary `git push`.
+**Overall:** GitHub Free beta **published**. Public install copy **GO for docs hotfix push**. Stores / npm / Pro remain **NO-GO**.
 
 **Not GO** for Chrome Web Store, Edge Add-ons, npm, or Pro.
 
@@ -18,7 +32,7 @@
 2. Automated e2e (9) still pass via a **localhost test overlay**; that overlay is not in the ZIP.
 3. Ten public HTTPS pages: **9 PASS / 1 PASS WITH LIMITATIONS** using the **shared Readability pipeline**, not the toolbar popup.
 4. Chrome 157 and Edge 157 **are installed**. Toolbar extraction in those branded browsers is **NOT TESTED**.
-5. GitHub Pages still serves `9aece96` until a new authorized push.
+5. Live Pages still show clone/`npm ci` until the Phase 18.1 docs commit is authorized and pushed.
 
 ### Owner decisions
 

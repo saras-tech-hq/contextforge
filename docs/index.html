@@ -27,6 +27,7 @@
         </a>
         <nav aria-label="Primary">
           <a href="#features">Features</a>
+          <a href="#install">Install</a>
           <a href="#pricing">Pricing</a>
           <a href="#mcp">MCP</a>
           <a href="privacy.html">Privacy</a>
@@ -44,8 +45,12 @@
               you opt into cloud.
             </p>
             <div class="cta">
-              <a class="btn btn-primary" href="#install">Load the extension</a>
-              <a class="btn btn-ghost" href="#pricing">Pro license</a>
+              <a
+                class="btn btn-primary"
+                href="https://github.com/saras-tech-hq/contextforge/releases/download/v1.0.0-beta.1/contextforge-v1.0.0.zip"
+                >Download Free Beta</a
+              >
+              <a class="btn btn-ghost" href="#install">Install steps</a>
             </div>
           </div>
           <div class="stage" aria-hidden="true">
@@ -80,6 +85,66 @@ Readable Markdown
           </div>
         </section>
 
+        <section id="install">
+          <h2>Install the Free beta</h2>
+          <article class="card">
+            <p>
+              This public beta uses <strong>manual installation</strong>. It is
+              <strong>not</strong> on the Chrome Web Store or Microsoft Edge Add-ons.
+              Do not look for “Add to Chrome” in the stores.
+            </p>
+            <ol class="steps">
+              <li>
+                <a
+                  href="https://github.com/saras-tech-hq/contextforge/releases/download/v1.0.0-beta.1/contextforge-v1.0.0.zip"
+                  >Download the ZIP</a
+                >
+                (<code>contextforge-v1.0.0.zip</code>). Optional:
+                <a
+                  href="https://github.com/saras-tech-hq/contextforge/releases/download/v1.0.0-beta.1/contextforge-v1.0.0.zip.sha256"
+                  >SHA-256 checksum</a
+                >.
+              </li>
+              <li>
+                Extract all files. You should see <code>manifest.json</code> in that
+                folder (not only inside a nested archive).
+              </li>
+              <li>
+                Open <code>chrome://extensions</code> (Chrome) or
+                <code>edge://extensions</code> (Edge).
+              </li>
+              <li>Turn on <strong>Developer mode</strong>.</li>
+              <li>
+                Choose <strong>Load unpacked</strong> and select the extracted folder
+                that contains <code>manifest.json</code>.
+              </li>
+              <li>
+                Open any <strong>https://</strong> webpage, click the ContextForge
+                icon in the toolbar (or press Alt+Shift+F), then Extract.
+              </li>
+            </ol>
+            <p class="fine">
+              Restricted pages such as <code>chrome://</code> and some PDFs cannot be
+              extracted. Need help?
+              <a href="https://github.com/saras-tech-hq/contextforge/issues">GitHub Issues</a>
+              (no telemetry).
+            </p>
+          </article>
+        </section>
+
+        <section id="developers">
+          <h2>For developers</h2>
+          <article class="card">
+            <p>
+              Building from source requires Node.js 22.12+. Clone the repo, then
+              <code>npm ci</code> → <code>npm run build</code>. Load unpacked from
+              <code>chrome-extension/</code>. MCP: point Cursor or Claude Desktop at
+              <code>node mcp-server/dist/index.js</code> (see
+              <code>examples/mcp.json</code>).
+            </p>
+          </article>
+        </section>
+
         <section id="pricing">
           <h2>Free core. Pro is optional.</h2>
           <div class="grid">
@@ -100,26 +165,6 @@ Readable Markdown
               </p>
             </article>
           </div>
-        </section>
-
-        <section id="install">
-          <h2>Install (developer)</h2>
-          <article class="card">
-            <p>
-              Requires Node.js 22.12+. Clone the repo, then:
-            </p>
-            <p><code>npm ci</code> → <code>npm run build</code></p>
-            <p>
-              Chrome: <code>chrome://extensions</code> · Edge:
-              <code>edge://extensions</code> → Developer mode → Load unpacked →
-              <code>chrome-extension/</code>.
-            </p>
-            <p>
-              Store listings are not published yet. Report issues at
-              <a href="https://github.com/saras-tech-hq/contextforge/issues">GitHub Issues</a>
-              (no telemetry).
-            </p>
-          </article>
         </section>
 
         <section id="mcp">
