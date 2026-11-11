@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="ContextForge turns any webpage into clean, token-efficient Markdown for AI tools. Local-first Chrome/Edge extension and MCP server."
+      content="ContextForge is a local-first Chrome and Edge extension that extracts the article you are reading into Markdown you can paste into ChatGPT, Claude, Gemini, or Cursor. Nothing is sent to our servers."
     />
-    <title>ContextForge — webpage to AI-ready Markdown</title>
+    <title>ContextForge — local Markdown for AI research</title>
+    <link rel="canonical" href="https://saras-tech-hq.github.io/contextforge/" />
     <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,9 +27,9 @@
           ContextForge
         </a>
         <nav aria-label="Primary">
-          <a href="#features">Features</a>
+          <a href="#demo">Demo</a>
           <a href="#install">Install</a>
-          <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
           <a href="#mcp">MCP</a>
           <a href="privacy.html">Privacy</a>
         </nav>
@@ -37,12 +38,12 @@
       <main id="content">
         <section class="hero">
           <div>
-            <p class="kicker">Local-first context engine</p>
-            <h1>Any page, clean Markdown, fewer tokens.</h1>
+            <p class="kicker">Free public beta · local-first</p>
+            <h1>Paste the article, not the page chrome.</h1>
             <p class="lede">
-              Local-first Chrome/Edge extension and MCP server. Extract readable
-              context for ChatGPT, Claude, Gemini, Cursor — on your device unless
-              you opt into cloud.
+              ContextForge extracts the main content of the tab you are reading
+              into Markdown, on your device. Copy it into ChatGPT, Claude,
+              Gemini, Cursor, or a notes app. We do not receive the page.
             </p>
             <div class="cta">
               <a
@@ -50,39 +51,74 @@
                 href="https://github.com/saras-tech-hq/contextforge/releases/download/v1.0.0-beta.1/contextforge-v1.0.0.zip"
                 >Download Free Beta</a
               >
-              <a class="btn btn-ghost" href="#install">Install steps</a>
+              <a class="btn btn-ghost" href="#install">Install in 6 steps</a>
             </div>
+            <p class="fine hero-note">
+              Manual sideload (Load unpacked). Not on the Chrome Web Store or
+              Edge Add-ons yet.
+            </p>
           </div>
           <div class="stage" aria-hidden="true">
             <div class="stage-card">
               <img src="brand-logo.png" width="88" height="88" alt="" />
-              <pre># Article title
-Readable Markdown
-~412 tokens</pre>
+              <pre># Markdown
+Local extract
+Copy → your AI tool</pre>
             </div>
           </div>
         </section>
 
-        <section id="features">
-          <h2>Built for extraction quality</h2>
-          <div class="grid">
+        <section id="demo">
+          <h2>What extraction actually looks like</h2>
+          <p class="lede">
+            Source:
+            <a href="https://en.wikipedia.org/wiki/Markdown">Wikipedia · Markdown</a>
+            (public page). Left is typical select-all noise. Right is ContextForge
+            output from the shared Readability + Turndown pipeline (same converter
+            the extension uses). This is not a claim that every site is this clean.
+          </p>
+          <div class="compare">
             <article class="card">
-              <h3>Readability + Turndown</h3>
-              <p>Main-content extraction, then tight Markdown. Not a kitchen-sink clipper.</p>
+              <h3>Before — copy the whole page</h3>
+              <pre class="sample">Jump to content
+Main menu
+Search
+Donate
+Create account
+Log in
+From Wikipedia, the free encyclopedia
+Contents  (Top)
+1 History
+2 Rise and divergence
+Toggle History subsection
+[edit]
+Personal tools
+Appearance
+…
+Footer · Privacy policy · Wikimedia</pre>
             </article>
             <article class="card">
-              <h3>Token estimates</h3>
-              <p>Live ~4-char token budget so you know what you paste into a model.</p>
-            </article>
-            <article class="card">
-              <h3>Local-first</h3>
-              <p>Extracts stay on device. Only the last extract is persisted, and license checks are opt-in.</p>
-            </article>
-            <article class="card">
-              <h3>Agents via MCP</h3>
-              <p>stdio server for Cursor and Claude Desktop: HTML or URL → Markdown.</p>
+              <h3>After — extracted Markdown</h3>
+              <pre class="sample"># Markdown
+
+From Wikipedia, the free encyclopedia
+
+Filename extensions
+`.md`, `.markdown`
+
+Internet media type
+`text/markdown`
+
+Markdown is a lightweight markup
+language for creating formatted text
+using a plain-text editor.</pre>
             </article>
           </div>
+          <p class="fine">
+            Token count in the popup is a rough ~4 characters per token estimate,
+            not a model tokenizer. Index pages and some JS apps yield short or
+            noisy Markdown. <code>chrome://</code> pages cannot be read.
+          </p>
         </section>
 
         <section id="install">
@@ -119,50 +155,86 @@ Readable Markdown
                 that contains <code>manifest.json</code>.
               </li>
               <li>
-                Open any <strong>https://</strong> webpage, click the ContextForge
-                icon in the toolbar (or press Alt+Shift+F), then Extract.
+                Open any <strong>https://</strong> article, click the ContextForge
+                icon in the toolbar (or press Alt+Shift+F), then Extract, then Copy.
               </li>
             </ol>
             <p class="fine">
-              Restricted pages such as <code>chrome://</code> and some PDFs cannot be
-              extracted. Need help?
+              If Extract fails, you are probably on a restricted page. Switch to a
+              normal https article. Problems:
               <a href="https://github.com/saras-tech-hq/contextforge/issues">GitHub Issues</a>
               (no telemetry).
             </p>
           </article>
         </section>
 
+        <section id="features">
+          <h2>Built for AI research workflows</h2>
+          <div class="grid">
+            <article class="card">
+              <h3>Main content, not the shell</h3>
+              <p>Mozilla Readability finds the article; Turndown turns it into Markdown you can paste.</p>
+            </article>
+            <article class="card">
+              <h3>Stays on the device</h3>
+              <p>No account. No telemetry. Only the last extract is stored locally, capped at 500k characters.</p>
+            </article>
+            <article class="card">
+              <h3>Rough token budget</h3>
+              <p>The popup shows ~4 characters per token so you can see how large a paste will be.</p>
+            </article>
+            <article class="card">
+              <h3>MCP for agents</h3>
+              <p>Optional stdio server for Cursor and Claude Desktop. Same converter, http(s) fetch only.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="faq">
+          <h2>FAQ</h2>
+          <div class="faq">
+            <details open>
+              <summary>Why isn’t this a one-click store install?</summary>
+              <p>Store listings are not submitted. The beta is a ZIP you load unpacked. That is a Chrome/Edge developer feature, not a hack.</p>
+            </details>
+            <details>
+              <summary>Does ContextForge upload the page?</summary>
+              <p>No. Extract and copy run in the extension. See <a href="privacy.html">Privacy</a>.</p>
+            </details>
+            <details>
+              <summary>Why did Extract fail?</summary>
+              <p>Chrome blocks extensions on <code>chrome://</code>, the Web Store, and some PDFs. Open a normal https article and try again.</p>
+            </details>
+            <details>
+              <summary>Is Pro for sale?</summary>
+              <p>No. Prompt packing exists in the code but is not sold. Free extract and copy are the product.</p>
+            </details>
+          </div>
+        </section>
+
         <section id="developers">
           <h2>For developers</h2>
           <article class="card">
             <p>
-              Building from source requires Node.js 22.12+. Clone the repo, then
+              Building from source requires Node.js 22.12+. Clone
+              <a href="https://github.com/saras-tech-hq/contextforge">the repo</a>, then
               <code>npm ci</code> → <code>npm run build</code>. Load unpacked from
-              <code>chrome-extension/</code>. MCP: point Cursor or Claude Desktop at
-              <code>node mcp-server/dist/index.js</code> (see
-              <code>examples/mcp.json</code>).
+              <code>chrome-extension/</code>. Tests: 39 unit/integration, 9 Playwright e2e.
             </p>
           </article>
         </section>
 
         <section id="pricing">
-          <h2>Free core. Pro is optional.</h2>
+          <h2>Free core. Pro is not for sale.</h2>
           <div class="grid">
             <article class="card">
               <p class="price">Free</p>
-              <p>Extract, copy, and keep the last result locally. Forever.</p>
-              <p class="fine">No account. No telemetry required.</p>
+              <p>Extract, copy, save .md, keep the last result locally.</p>
+              <p class="fine">No account. No telemetry.</p>
             </article>
             <article class="card">
               <p class="price">Pro</p>
-              <p>
-                Prompt packing in the extension, validated with a license key by
-                the ContextForge license Worker.
-              </p>
-              <p class="fine">
-                Pro licensing is not open yet. Everything on the Free tier keeps
-                working without a key.
-              </p>
+              <p>Prompt packing is implemented but licensing is disabled. Do not expect a checkout.</p>
             </article>
           </div>
         </section>
@@ -182,7 +254,7 @@ Readable Markdown
       </main>
 
       <footer>
-        <span>ContextForge — MIT core. Pro licensing is separate.</span>
+        <span>ContextForge — MIT. Local extract is free.</span>
         <a href="privacy.html">Privacy</a>
       </footer>
     </div>

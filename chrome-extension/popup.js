@@ -7,10 +7,33 @@ import { saveLastExtract } from "./storage.js";
 
 const extractBtn = document.getElementById("extract");
 const copyBtn = document.getElementById("copy");
+const downloadBtn = document.getElementById("download");
 const packBtn = document.getElementById("pack");
+const shareBtn = document.getElementById("share-product");
 const output = document.getElementById("output");
 const statusEl = document.getElementById("status");
 const tokensEl = document.getElementById("tokens");
+const PRODUCT_URL = "https://saras-tech-hq.github.io/contextforge/";
+
+function friendlyExtractError(err, tabUrl) {
+  const msg = String(err?.message || err);
+  const url = String(tabUrl || "");
+  if (/^(chrome|edge|about|devtools):/i.test(url) || /chromewebstore|microsoftedge\.microsoft\.com\/addons/i.test(url)) {
+    return "This page cannot be read. Open a normal https:// article, then Extract.";
+  }
+  if (/Cannot access contents of the page|must request permission|Cannot access|The extensions gallery/i.test(msg)) {
+    return "This page cannot be read. Open a normal https:// article, then Extract.";
+  }
+  if (/No active tab/i.test(msg)) {
+    return "No active tab. Click a webpage, then open ContextForge again.";
+  }
+  return msg;
+}
+
+function setOutputButtons(enabled) {
+  copyBtn.disabled = !enabled;
+  if (downloadBtn) downloadBtn.disabled = !enabled;
+}
 // DOM elements
 const proStatus = document.getElementById("pro-status");
 const licenseInput = document.getElementById("license-key");
@@ -22,7 +45,7 @@ async function refreshProUi() {
   packBtn.disabled = !pro || !output.value;
   proStatus.textContent = pro
     ? `Pro active (${state.status || "active"})`
-    : "Free tier — core extract is unlimited. Pro unlocks prompt packing.";
+    : "Free tier — core extract is unlimited. Prompt packing is not for sale.";
 }
 
 function updateTokenLabel() {
@@ -40,16 +63,18 @@ const extractDeps = { TurndownService, Readability: class {} };
 
 output.addEventListener("input", async () => {
   updateTokenLabel();
-  copyBtn.disabled = !output.value;
+  setOutputButtons(Boolean(output.value));
   packBtn.disabled = !(await isPro()) || !output.value;
 });
 
 extractBtn.addEventListener("click", async () => {
   setStatus("Extracting…");
-  copyBtn.disabled = true;
+  setOutputButtons(false);
 
+  let tabUrl = "";
   try {
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    tabUrl = tab?.url || "";
     if (!tab?.id) throw new Error("No active tab");
 
     await chrome.scripting.executeScript({
@@ -78,7 +103,7 @@ extractBtn.addEventListener("click", async () => {
     output.value = page.markdown;
     updateTokenLabel();
     setStatus(page.title || "Done", "ok");
-    copyBtn.disabled = !page.markdown;
+    setOutputButtons(Boolean(page.markdown));
     packBtn.disabled = !(await isPro()) || !page.markdown;
 
     const saved = await saveLastExtract(page);
@@ -90,16 +115,41 @@ extractBtn.addEventListener("click", async () => {
     // Never leave a previous page's Markdown looking like the current result.
     output.value = "";
     updateTokenLabel();
-    copyBtn.disabled = true;
+    setOutputButtons(false);
     packBtn.disabled = true;
-    setStatus(err.message || String(err), "error");
+    setStatus(friendlyExtractError(err, tabUrl), "error");
   }
 });
 
+async function copyText(text, okLabel) {
+  try {
+    await navigator.clipboard.writeText(text);
+    setStatus(okLabel, "ok");
+  } catch {
+    output.select();
+    setStatus("Clipboard blocked — press Ctrl+C (or Cmd+C) to copy.", "error");
+  }
+}
+
 copyBtn.addEventListener("click", async () => {
+  await copyText(cleanMarkdown(output.value), "Copied");
+});
+
+downloadBtn?.addEventListener("click", () => {
   const md = cleanMarkdown(output.value);
-  await navigator.clipboard.writeText(md);
-  setStatus("Copied", "ok");
+  if (!md) return;
+  const blob = new Blob([md], { type: "text/markdown" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "contextforge.md";
+  a.click();
+  URL.revokeObjectURL(url);
+  setStatus("Saved contextforge.md", "ok");
+});
+
+shareBtn?.addEventListener("click", async () => {
+  await copyText(PRODUCT_URL, "Product link copied");
 });
 
 packBtn.addEventListener("click", async () => {
@@ -111,8 +161,7 @@ packBtn.addEventListener("click", async () => {
   const packed = `Use the following webpage extract as context. Stay within the source; do not invent facts.\n\n${md}`;
   output.value = packed;
   updateTokenLabel();
-  await navigator.clipboard.writeText(packed);
-  setStatus("Packed prompt copied", "ok");
+  await copyText(packed, "Packed prompt copied");
 });
 
 activateBtn.addEventListener("click", async () => {

@@ -306,6 +306,53 @@ h2 {
   margin-top: 0.9rem;
 }
 
+.hero-note {
+  margin-top: 0.85rem;
+  max-width: 36rem;
+}
+
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.sample {
+  margin: 0.7rem 0 0;
+  max-height: 14rem;
+  overflow: auto;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: #b8f4ff;
+  white-space: pre-wrap;
+}
+
+.faq details {
+  background: var(--glass);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 0.85rem 1.1rem;
+  margin: 0.65rem 0;
+}
+
+.faq summary {
+  cursor: pointer;
+  font-weight: 650;
+  color: var(--cyan);
+}
+
+.faq details p {
+  margin: 0.6rem 0 0;
+  color: var(--muted);
+}
+
+@media (max-width: 800px) {
+  .compare {
+    grid-template-columns: 1fr;
+  }
+}
+
 code {
   font-family: var(--mono);
   font-size: 0.86em;

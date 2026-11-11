@@ -1,14 +1,18 @@
 # ContextForge
 
-Local-first Chrome/Edge (Manifest V3) extension **and** MCP server that turns any webpage into clean, token-efficient Markdown context for AI tools (ChatGPT, Claude, Gemini, Cursor, and others).
+Local-first Chrome/Edge (Manifest V3) extension **and** MCP server. It extracts the **main content** of the page you are reading into Markdown you can paste into ChatGPT, Claude, Gemini, Cursor, or a notes app.
+
+**Positioning:** AI research and development workflows — not an Obsidian vault clipper, not a cloud summarizer. Page content is not sent to ContextForge servers.
+
+**Public beta (non-developers):** download the ZIP and Load unpacked. Steps: [website](https://saras-tech-hq.github.io/contextforge/) · [release](https://github.com/saras-tech-hq/contextforge/releases/tag/v1.0.0-beta.1). This is **not** a Chrome Web Store or Edge Add-ons install.
 
 ## Principles
 
-- **Local-first by default** — data stays on device unless you opt into cloud.
-- **Dual interface** — polished browser extension + MCP server for agents.
-- **Extraction quality + token efficiency** — not feature bloat.
-- **Free forever** for core local features.
-- **Model-agnostic and UI-agnostic**.
+- **Local-first** — extract and copy stay on the device.
+- **Dual interface** — browser extension + MCP server for agents.
+- **Main-content extraction** — Readability + Turndown, not a kitchen-sink clipper.
+- **Free** for extract, copy, and local last-result storage.
+- **Honest limits** — `chrome://` pages, some PDFs, and some JS apps fail or yield short Markdown.
 
 ## Monorepo layout
 
@@ -30,24 +34,31 @@ tools/              Build, packaging, and audit helpers
 | Extraction | Mozilla Readability + Turndown.js |
 | MCP | TypeScript + official MCP SDK (stdio) |
 | Storage (free) | `chrome.storage.local`, bounded to the last extract |
-| Auth / Pro | Lemon Squeezy + Cloudflare Worker (`workers/license-verify`) |
+| Auth / Pro | Not for sale. Worker path exists but is disabled in the Free manifest (no `host_permissions`). |
 
-## Getting started
+## Getting started (users)
+
+1. Download [`contextforge-v1.0.0.zip`](https://github.com/saras-tech-hq/contextforge/releases/download/v1.0.0-beta.1/contextforge-v1.0.0.zip).
+2. Extract it so you can see `manifest.json`.
+3. Chrome: `chrome://extensions` · Edge: `edge://extensions` → Developer mode → **Load unpacked** → that folder.
+4. Open an **https://** article → toolbar icon (or Alt+Shift+F) → Extract → Copy.
+
+## Getting started (developers)
 
 Requires Node.js 22.12+.
 
 ```bash
-npm install
+npm ci
 npm run build
 ```
 
-### Extension (Chrome / Edge)
+### Extension (from source)
 
 1. Open `chrome://extensions` (or `edge://extensions`).
 2. Enable **Developer mode**.
 3. **Load unpacked** → select `chrome-extension/`.
 
-The popup extracts the current tab: Readability article HTML → Turndown Markdown → copy / save locally. Only the most recent extract is persisted, capped at 500,000 characters so a large page cannot exhaust the storage quota.
+The popup extracts the current tab: Readability article HTML → Turndown Markdown → copy / save `.md` locally. Only the most recent extract is persisted, capped at 500,000 characters so a large page cannot exhaust the storage quota.
 
 ### MCP server (stdio)
 
@@ -86,29 +97,16 @@ Static files in `docs/`. Preview:
 npx --yes serve docs
 ```
 
-### Pro licenses (Lemon Squeezy + Cloudflare Worker)
+### Pro licenses (disabled)
 
-Core extract stays free and local. Pro (prompt packing) is gated by a key validated **on the Worker**, never with a store API secret in the extension. Pro checkout is not open yet; this section documents the opt-in deployment path.
-
-1. Enable license keys on a Lemon Squeezy product; create an API key.
-2. Deploy:
-
-```bash
-cd workers/license-verify
-npx wrangler login
-npx wrangler secret put LEMON_SQUEEZY_API_KEY
-npx wrangler deploy
-```
-
-3. Set `LICENSE_API_URL` in `chrome-extension/config.js` and add that origin to `manifest.json` `host_permissions` only when Pro is actually enabled. The Free manifest ships with no host permissions.
-4. Full notes: `workers/license-verify/README.md`.
+Core extract stays free and local. Prompt packing is gated in code but **not sold**. Do not add `host_permissions` until Pro is intentionally enabled. Notes: `workers/license-verify/README.md`.
 
 Production-readiness notes (local, not a store submission): [`release/GO-NO-GO.md`](release/GO-NO-GO.md).
 
 ## Verification
 
 ```bash
-npm test            # 36 unit and integration tests
+npm test            # 39 unit and integration tests
 npm run test:e2e    # 9 Playwright browser tests
 npm run verify:build
 powershell -NoProfile -ExecutionPolicy Bypass -File tools/verify-zip.ps1
@@ -116,4 +114,4 @@ powershell -NoProfile -ExecutionPolicy Bypass -File tools/verify-zip.ps1
 
 ## License
 
-MIT — see [LICENSE](LICENSE). Core local extraction and storage remain free. Pro keys are separate and are not currently on sale.
+MIT — see [LICENSE](LICENSE). Core local extraction and storage remain free. Pro keys are not currently on sale.

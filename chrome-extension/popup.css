@@ -170,12 +170,33 @@ textarea:focus-visible {
 }
 
 #copy,
-#activate {
+#download,
+#activate,
+#share-product {
   padding: 7px 11px;
   background: var(--bg-subtle);
   color: var(--fg);
   border: 1px solid var(--border);
   border-radius: 8px;
+}
+
+#download:disabled,
+#copy:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.share-row {
+  margin-top: 10px;
+}
+
+.section-pro summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.section-pro summary::-webkit-details-marker {
+  display: none;
 }
 
 #pack {

@@ -13,7 +13,7 @@
     <p class="tagline">Local-first page → Markdown</p>
 
     <aside id="onboarding" class="onboarding" hidden>
-      <p>Open any article, click Extract, then Copy. Nothing leaves this device unless you paste it elsewhere. Pro packing is not on sale.</p>
+      <p>Open an https article, click Extract, then Copy. chrome:// and the Web Store cannot be read. Nothing is sent to a server. Pro is not for sale.</p>
       <button id="dismiss-onboarding" type="button">Got it</button>
     </aside>
 
@@ -24,18 +24,23 @@
       <textarea id="output" placeholder="Markdown will appear here (editable; tokens update live)"></textarea>
       <div class="row">
         <button id="copy" type="button" disabled>Copy</button>
-        <button id="pack" type="button" disabled title="Pro: wrap as an AI prompt">Pack prompt</button>
+        <button id="download" type="button" disabled>Save .md</button>
+        <button id="pack" type="button" disabled title="Pro packing is not for sale">Pack prompt</button>
         <span id="tokens"></span>
       </div>
 
-      <section class="section-pro">
-        <span class="pro-badge">Pro</span>
-        <p id="pro-status" class="fine">Free tier — core extract is unlimited. Pro unlocks prompt packing.</p>
+      <p class="fine share-row">
+        <button id="share-product" type="button">Copy product link</button>
+      </p>
+
+      <details class="section-pro">
+        <summary><span class="pro-badge">Pro</span> not for sale</summary>
+        <p id="pro-status" class="fine">Free tier — core extract is unlimited. Prompt packing is disabled.</p>
         <div class="row">
           <input id="license-key" type="password" autocomplete="off" placeholder="Pro license key" />
           <button id="activate" type="button">Activate</button>
         </div>
-      </section>
+      </details>
     </main>
 
     <script type="module" src="popup.js"></script>

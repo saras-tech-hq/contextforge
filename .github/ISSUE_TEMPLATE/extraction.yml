@@ -1,0 +1,30 @@
+name: Extraction quality
+description: Markdown was empty, too short, or full of navigation.
+title: "[extract] "
+labels: ["extraction"]
+body:
+  - type: markdown
+    attributes:
+      value: Share a **public** URL when you can. Do not paste confidential documents.
+  - type: input
+    id: url
+    attributes:
+      label: Public URL (optional)
+  - type: dropdown
+    id: result
+    attributes:
+      label: Result
+      options:
+        - Empty
+        - Too short
+        - Nav/footer noise
+        - Broken tables/code
+        - Error message
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: What you expected
+    validations:
+      required: true

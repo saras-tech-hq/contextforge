@@ -1,0 +1,27 @@
+name: Feature request
+description: A change that would make extract/copy more useful.
+title: "[feature] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Idea
+    validations:
+      required: true
+  - type: dropdown
+    id: workflow
+    attributes:
+      label: Workflow
+      options:
+        - Paste into ChatGPT / Claude / Gemini
+        - Cursor / coding agent
+        - Notes / research
+        - MCP
+        - Other

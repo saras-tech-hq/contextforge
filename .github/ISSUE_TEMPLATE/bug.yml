@@ -1,0 +1,30 @@
+name: Bug
+description: Something in ContextForge does not work as documented.
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Do not paste secrets or private page content. Trim extracts.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and version
+      placeholder: Chrome 157 / Edge 157
+  - type: input
+    id: url-kind
+    attributes:
+      label: Page kind (not the private URL if sensitive)
+      placeholder: "https Wikipedia article / MDN / chrome://extensions"
