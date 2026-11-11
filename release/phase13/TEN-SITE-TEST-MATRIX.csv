@@ -1,0 +1,11 @@
+id,category,url,status,http,latencyMs,chars,tokens,issues
+01-wikipedia-markdown,Wikipedia article,https://en.wikipedia.org/wiki/Markdown,PASS,200,20418,42449,10613,""
+02-mdn-html,MDN documentation,https://developer.mozilla.org/en-US/docs/Web/HTML,PASS,200,5052,11757,2940,""
+03-webdev-fast,Web development docs,https://web.dev/articles/fast,PASS,200,5691,1208,302,""
+04-guardian,News/editorial,https://www.theguardian.com/technology/artificialintelligenceai,PASS,200,5169,3900,977,""
+05-overreacted,Blog index,https://overreacted.io/,PASS WITH LIMITATIONS,200,3247,155,39,"short extract (index, not a long article)"
+06-wikipedia-json,Page with tables/code,https://en.wikipedia.org/wiki/JSON,PASS,200,6494,63126,15782,""
+07-nodejs-fs,Code documentation,https://nodejs.org/docs/latest/api/fs.html,PASS,200,24412,417573,104394,""
+08-wikipedia-http,Long-form documentation,https://en.wikipedia.org/wiki/HTTP,PASS,200,7226,97000,24250,""
+09-react-learn,JavaScript-heavy,https://react.dev/learn,PASS,200,5929,16765,4192,""
+10-http-status,Mixed lists/links/headings,https://en.wikipedia.org/wiki/List_of_HTTP_status_codes,PASS,200,6139,68333,17084,""

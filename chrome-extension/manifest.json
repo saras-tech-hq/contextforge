@@ -4,9 +4,6 @@
   "version": "1.0.0",
   "description": "Turn any webpage into clean, token-efficient Markdown for AI tools. Local-first.",
   "permissions": ["activeTab", "scripting", "storage", "clipboardWrite"],
-  "host_permissions": [
-    "https://contextforge-license.example.workers.dev/*"
-  ],
   "action": {
     "default_title": "ContextForge",
     "default_popup": "popup.html",
@@ -25,5 +22,13 @@
   },
   "background": {
     "service_worker": "background.js"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+Shift+F"
+      },
+      "description": "Open ContextForge"
+    }
   }
 }
