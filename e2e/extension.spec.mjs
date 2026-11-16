@@ -200,8 +200,10 @@ test("extension package loads and exposes the MV3 popup", async () => {
   expect(manifest.permissions).toEqual(
     expect.arrayContaining(["activeTab", "scripting", "storage", "clipboardWrite"])
   );
-  expect(manifest.version).toBe("1.0.0");
+  expect(manifest.version).toBe("1.0.1");
   expect(Object.keys(manifest.icons || {}).sort()).toEqual(["128", "16", "32", "48"]);
+  expect(await popup.isDisabled("#download")).toBe(true);
+  expect(popup.locator("#share-product")).toHaveCount(1);
 });
 
 test("extracts the live Chromium page into Markdown and persists it", async () => {
@@ -213,6 +215,7 @@ test("extracts the live Chromium page into Markdown and persists it", async () =
   expect(output).toContain("Second section");
   expect(output).toMatch(/^- +First item$/m);
   expect(output).toContain("```");
+  expect(await popup.isDisabled("#download")).toBe(false);
 
   const tokens = await popup.textContent("#tokens");
   expect(tokens).toMatch(/~\d+ tokens/);

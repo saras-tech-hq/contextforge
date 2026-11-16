@@ -16,5 +16,7 @@ I built a Chrome/Edge extension that runs Mozilla Readability + Turndown in the 
 
 It is a Load-unpacked ZIP (not on the Chrome Web Store). chrome:// pages cannot be scripted. Pro packing exists in the repo but is not for sale.
 
+Proposed package after owner publish: ContextForge 1.0.1 (`v1.0.1-beta.1`). Until then the live tag is `v1.0.0-beta.1`.
+
 Site: https://saras-tech-hq.github.io/contextforge/
 Repo: https://github.com/saras-tech-hq/contextforge

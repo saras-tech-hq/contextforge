@@ -1,7 +1,7 @@
 $ErrorActionPreference = "Stop"
 $root = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
 $src = Join-Path $root "chrome-extension"
-$zip = Join-Path $root "contextforge-v1.0.0.zip"
+$zip = Join-Path $root "contextforge-v1.0.1.zip"
 $stage = Join-Path $root "artifacts\zip-stage"
 $check = Join-Path $root "artifacts\zip-check"
 

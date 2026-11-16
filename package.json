@@ -1,6 +1,6 @@
 {
   "name": "contextforge",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Local-first Chrome/Edge extension + MCP server that turns any webpage into clean, token-efficient Markdown for AI tools.",
   "workspaces": [

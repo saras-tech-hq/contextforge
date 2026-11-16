@@ -4,7 +4,7 @@ Local-first Chrome/Edge (Manifest V3) extension **and** MCP server. It extracts 
 
 **Positioning:** AI research and development workflows — not an Obsidian vault clipper, not a cloud summarizer. Page content is not sent to ContextForge servers.
 
-**Public beta (non-developers):** download the ZIP and Load unpacked. Steps: [website](https://saras-tech-hq.github.io/contextforge/) · [release](https://github.com/saras-tech-hq/contextforge/releases/tag/v1.0.0-beta.1). This is **not** a Chrome Web Store or Edge Add-ons install.
+**Public beta (non-developers):** download the ZIP and Load unpacked. Steps: [website](https://saras-tech-hq.github.io/contextforge/) · [v1.0.1-beta.1](https://github.com/saras-tech-hq/contextforge/releases/tag/v1.0.1-beta.1) after that GitHub Release exists. This is **not** a Chrome Web Store or Edge Add-ons install.
 
 ## Principles
 
@@ -38,7 +38,7 @@ tools/              Build, packaging, and audit helpers
 
 ## Getting started (users)
 
-1. Download [`contextforge-v1.0.0.zip`](https://github.com/saras-tech-hq/contextforge/releases/download/v1.0.0-beta.1/contextforge-v1.0.0.zip).
+1. Download [`contextforge-v1.0.1.zip`](https://github.com/saras-tech-hq/contextforge/releases/download/v1.0.1-beta.1/contextforge-v1.0.1.zip) once the `v1.0.1-beta.1` GitHub Release is published.
 2. Extract it so you can see `manifest.json`.
 3. Chrome: `chrome://extensions` · Edge: `edge://extensions` → Developer mode → **Load unpacked** → that folder.
 4. Open an **https://** article → toolbar icon (or Alt+Shift+F) → Extract → Copy.

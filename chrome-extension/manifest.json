@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "ContextForge",
-  "version": "1.0.0",
-  "description": "Turn any webpage into clean, token-efficient Markdown for AI tools. Local-first.",
+  "version": "1.0.1",
+  "description": "Extract the article you are reading into Markdown on your device. Local-first.",
   "permissions": ["activeTab", "scripting", "storage", "clipboardWrite"],
   "action": {
     "default_title": "ContextForge",
